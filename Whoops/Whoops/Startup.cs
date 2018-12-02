@@ -47,7 +47,7 @@ namespace Whoops
                 services.AddScoped<IContactSender, MockContactSender>();
 
 
-            services.AddIdentity<WorldUser, IdentityRole>(config =>
+            services.AddIdentity<User, IdentityRole>(config =>
              {
                  config.User.RequireUniqueEmail = true;
                  config.Password.RequiredLength = 4;
@@ -60,7 +60,7 @@ namespace Whoops
             services.AddSingleton<IConfigurationRoot>(_config);
             services.AddDbContext<WorldContext>();
             services.AddLogging();
-            services.ConfigureApplicationCookie(opt => opt.LoginPath = "/auth/login");
+            services.ConfigureApplicationCookie(opt =>  opt.LoginPath = "/auth/login");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -86,7 +86,7 @@ namespace Whoops
                 factory.AddDebug(LogLevel.Error);
             }
 
-           
+            app.UseAuthentication();
             app.UseStaticFiles();
             app.UseMvc(config=>
             {

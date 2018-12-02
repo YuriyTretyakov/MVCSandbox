@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Whoops.DataLayer
 {
-    public class WorldContext:IdentityDbContext<WorldUser>
+    public class WorldContext:IdentityDbContext<User>
     {
         private readonly IConfigurationRoot _config;
 

@@ -9,9 +9,9 @@ namespace Whoops.DataLayer
     public class WorldContextSeedData
     {
         private readonly WorldContext _context;
-        private readonly UserManager<WorldUser> _userManager;
+        private readonly UserManager<User> _userManager;
 
-        public WorldContextSeedData(WorldContext context,UserManager<WorldUser> userManager)
+        public WorldContextSeedData(WorldContext context,UserManager<User> userManager)
         {
             _context = context;
             _userManager = userManager;
@@ -24,7 +24,7 @@ namespace Whoops.DataLayer
 
             if (await _userManager.FindByEmailAsync("admin@site.com") ==null)
             {
-                var user = new WorldUser
+                var user = new User
                 {
                     UserName = seedUserName,
                     Email = "admin@site.com"

@@ -11,9 +11,9 @@ namespace Whoops.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly SignInManager<WorldUser> _signInManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public AuthController(SignInManager<WorldUser> signInManager)
+        public AuthController(SignInManager<User> signInManager)
         {
             _signInManager = signInManager;
         }
@@ -58,7 +58,8 @@ namespace Whoops.Controllers
         [HttpGet]
         public IActionResult Logout()
         {
-            return View();
+            _signInManager.SignOutAsync();
+            return Redirect("/");
         }
     }
 }

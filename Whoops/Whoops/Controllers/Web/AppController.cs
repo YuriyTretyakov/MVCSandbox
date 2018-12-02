@@ -35,5 +35,7 @@ namespace Whoops.Controllers.Web
         {
             return View();
         }
+
+        
     }
 }

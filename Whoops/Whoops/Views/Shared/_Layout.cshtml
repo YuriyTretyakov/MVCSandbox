@@ -10,15 +10,22 @@
 </head>
 <body>
     <div id="sidebar">
-        <img src="https://sinst.fwdcdn.com/img/weatherImg/b/n300.jpg" class="sidebarimg" />
-        <span id="textholder">Some cool text is here</span>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <img src="https://sinst.fwdcdn.com/img/weatherImg/b/n300.jpg" class="sidebarimg" />
+            <span class="text-info">@User.Identity.Name</span>
+        }
         <div class="nav">
             <ul>
                 <li class="active" style="list-style-type:none"> <a asp-controller="App" asp-action="Index">Home</a></li>
                 <li class="default" style="list-style-type:none"> <a asp-controller="App" asp-action="About">About</a></li>
-                <li class="default" style="list-style-type:none"> <a href="">Submit Request</a></li>
-                <li class="default"style="list-style-type:none"> <a asp-controller="App" asp-action="Contacts"> Contacts</a></li>
-                <li class="default"style="list-style-type:none"> <a href="#">Donate</a></li>
+                <li class="default" style="list-style-type:none"> <a asp-controller="App" asp-action="Contacts"> Contacts</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="default" style="list-style-type:none"> <a asp-controller="App" asp-action="Trips">Trips</a></li>
+                    <li class="default" style="list-style-type:none"> <a asp-controller="Auth" asp-action="Logout">Logout</a></li>
+                }
+
             </ul>
         </div>
     </div>
@@ -33,7 +40,13 @@
                         </button>
                     </li>
                 </ul>
-                <a class="navbar-brand" asp-controller="App" asp-action="Index">Woops Site</a>
+               
+                @if (!User.Identity.IsAuthenticated)
+                {
+                <a class="fa fa-sign-in fa-lg" asp-controller="UserManagement" asp-action="CreateUser">Register</a>
+                }
+
+
             </div>
         </nav>
         <div id="main" class="container-fluid">

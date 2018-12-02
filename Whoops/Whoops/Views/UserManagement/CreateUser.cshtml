@@ -1,0 +1,51 @@
+﻿@model Whoops.ViewModels.CreateUserViewModel
+
+@{
+    ViewBag.Title = "Create User";
+
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h1>Create User</h1>
+        <div>
+            <form method="post" >
+                <div class="form-group">
+                    <label>FirstName</label>
+                    <input class="form-control" />
+                    <span style="color:red" class="text-muted"></span>
+                </div>
+                <div class="form-group">
+                    <label>LastName</label>
+                    <input class="form-control" />
+                    <span style="color:red" class="text-muted"></span>
+                </div>
+                <div class="form-group">
+                    <label>DOB</label>
+                    <input class="form-control" type="date" />
+                    <span style="color:red" class="text-muted"></span>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" type="email" />
+                    <span style="color:red" class="text-muted"></span>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input class="form-control" type="password" />
+                    <span style="color:red" class="text-muted"></span>
+                </div>
+                <div class="form-group">
+                    <label>ConfirmPassword</label>
+                    <input class="form-control" type="password" />
+                    <span style="color:red" class="text-muted"></span>
+                </div>
+                <div class="form-group">
+                    <a asp-controller="UserManagement" asp-action="CreateUser" class="btn btn-primary">Cancel</a>
+                    <input type="submit" value="Create User" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

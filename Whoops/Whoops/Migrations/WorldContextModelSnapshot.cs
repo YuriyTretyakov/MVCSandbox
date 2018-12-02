@@ -171,7 +171,7 @@ namespace Whoops.Migrations
                     b.ToTable("Trips");
                 });
 
-            modelBuilder.Entity("Whoops.DataLayer.WorldUser", b =>
+            modelBuilder.Entity("Whoops.DataLayer.User", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -181,14 +181,28 @@ namespace Whoops.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<DateTime>("DOB");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<string>("FirstName");
+
+                    b.Property<int>("HistoryId");
+
+                    b.Property<bool>("IsNotificationsAllowed");
+
+                    b.Property<DateTime>("LastLoggedInOn");
+
+                    b.Property<string>("LastName");
+
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<int>("LoyaltyId");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -201,6 +215,8 @@ namespace Whoops.Migrations
                     b.Property<string>("PhoneNumber");
 
                     b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<DateTime>("RegisteredOn");
 
                     b.Property<string>("SecurityStamp");
 
@@ -232,7 +248,7 @@ namespace Whoops.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Whoops.DataLayer.WorldUser")
+                    b.HasOne("Whoops.DataLayer.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -240,7 +256,7 @@ namespace Whoops.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Whoops.DataLayer.WorldUser")
+                    b.HasOne("Whoops.DataLayer.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -253,7 +269,7 @@ namespace Whoops.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Whoops.DataLayer.WorldUser")
+                    b.HasOne("Whoops.DataLayer.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -261,7 +277,7 @@ namespace Whoops.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Whoops.DataLayer.WorldUser")
+                    b.HasOne("Whoops.DataLayer.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
