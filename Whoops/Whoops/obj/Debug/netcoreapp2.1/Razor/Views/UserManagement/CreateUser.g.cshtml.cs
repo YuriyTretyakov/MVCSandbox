@@ -59,7 +59,7 @@ namespace AspNetCore
             WriteLiteral("\r\n<div class=\"row\">\r\n    <div class=\"col-md-6\">\r\n        <h1>Create User</h1>\r\n        <div>\r\n            ");
             EndContext();
             BeginContext(199, 1779, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "04356dc9dc984b1e984d8bf7b1291950", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e8da0867e79f438d9c7b8a8ecee3e23f", async() => {
                 BeginContext(220, 1531, true);
                 WriteLiteral(@"
                 <div class=""form-group"">
@@ -97,7 +97,7 @@ namespace AspNetCore
                     ");
                 EndContext();
                 BeginContext(1751, 93, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86047aeceb0a4fe5b80d7e4ff444ccb4", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e07c8a6b048e47248c12a9bce2bcd4fb", async() => {
                     BeginContext(1834, 6, true);
                     WriteLiteral("Cancel");
                     EndContext();

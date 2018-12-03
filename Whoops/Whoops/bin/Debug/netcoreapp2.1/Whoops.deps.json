@@ -4113,7 +4113,7 @@
     "Microsoft.AspNetCore.Diagnostics/2.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-F9GjtKSe4HeOqZJjnnI110wDcvsY0aguALGswbr+R3iuw6X+Mzko7S/Vx7LxQXxInOCJoxnNEkd7Kf59dFFSRg==",
+      "sha512": "sha512-ge63gLLC9FgHfGXm468KzGne61dVzUwdkWAz02uIbcMKNjfsE1Hccy+619orWDccRLB6qk+XDu7w78BbC/ojMA==",
       "path": "microsoft.aspnetcore.diagnostics/2.1.1",
       "hashPath": "microsoft.aspnetcore.diagnostics.2.1.1.nupkg.sha512"
     },
@@ -4505,7 +4505,7 @@
     "Microsoft.AspNetCore.StaticFiles/2.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3xumS58evfsC4cd8OXtYRafbwuVk5c37dsGQ1E1m0wZvRVUXScRWkTGdcPJcijoImlhoQK2pj6sY7NFMc5PfbQ==",
+      "sha512": "sha512-Oj1HjAjICQ/wm+lQnhifxl1IMLkRr9GAy45/mMBVM/uMoVOqS5pj3tv2DcsHcWXyi4gUt+F+7DHCiHlWw0PmGw==",
       "path": "microsoft.aspnetcore.staticfiles/2.1.1",
       "hashPath": "microsoft.aspnetcore.staticfiles.2.1.1.nupkg.sha512"
     },
@@ -4631,7 +4631,7 @@
     "Microsoft.Extensions.Configuration.EnvironmentVariables/2.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-rDFRChBvs6sPGC+JjshKsP4kWRvsG8Y9MQKduDu60RWnJpFiIpQ7HK2K9sPrCL1MaYEk894PUkiZ5Xdsm9cPvg==",
+      "sha512": "sha512-o483iSS4+BP9I5IKM3+Sv8nzS0tlOQwHUR7EKPyAGqWW96V4Ve+0kIDx/wLfHZAcl/SySMKZXHsPCYZQEQqSOQ==",
       "path": "microsoft.extensions.configuration.environmentvariables/2.1.1",
       "hashPath": "microsoft.extensions.configuration.environmentvariables.2.1.1.nupkg.sha512"
     },
@@ -4652,7 +4652,7 @@
     "Microsoft.Extensions.Configuration.Json/2.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-f6KcI9v0GVA4YL/ExoxrEfeQv9La3hyQnySfgxGkFtMeDJIUun0ANoMjspbdpXXnuaScwgbQ2mFE3lJHt9lpJw==",
+      "sha512": "sha512-c7PP/hEluBJzs7zxUVnXuUT8NPPIeUr+KktS9kTg+6bQfyqxUKSzfgXOfaUUchlP9ZHuF34caQtGc6br9vFR4g==",
       "path": "microsoft.extensions.configuration.json/2.1.1",
       "hashPath": "microsoft.extensions.configuration.json.2.1.1.nupkg.sha512"
     },
@@ -4799,7 +4799,7 @@
     "Microsoft.Extensions.Logging.Debug/2.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-JP/wI5pbt+7r6U80lfsHimQp1qJN6v97XG2dzgH8O1hv5zNhYvB9m1EeARJruppcTXrXrgBIl8Hjeh5Mvu/AyQ==",
+      "sha512": "sha512-EYIbho5cx2hqiQLj3OfNjBxuWD76WDDBNxYJDYNC133mq00mYqdaPBbslfFSQr2kPXuvQrYjooWaERcnQcktkA==",
       "path": "microsoft.extensions.logging.debug/2.1.1",
       "hashPath": "microsoft.extensions.logging.debug.2.1.1.nupkg.sha512"
     },

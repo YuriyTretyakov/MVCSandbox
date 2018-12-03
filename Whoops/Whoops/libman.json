@@ -14,6 +14,6 @@
     },
     { "library": "font-awesome@4.7.0" },
     { "library": "bootswatch@4.1.3" },
-    {"library": "angular.js@1.7.5"}
+    {"library": "angular.js@1.7.5","destination": "wwwroot/lib/angular"}
   ]
 }
