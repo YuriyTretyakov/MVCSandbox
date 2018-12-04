@@ -8,7 +8,7 @@ namespace Whoops.ViewModels
         [Required]
         public string FirstName { get; set; }
         public string LastName { get; set; }
-       // public DateTime? DOB { get; set; }
+        public DateTime? DOB { get; set; }
         [Required]
         public string Email { get; set; }
         [Required]

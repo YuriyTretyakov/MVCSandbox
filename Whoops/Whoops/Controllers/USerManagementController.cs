@@ -28,7 +28,7 @@ namespace Whoops.Controllers
         }
 
         [Authorize]
-        [HttpGet]
+        [HttpPost]
         public IActionResult UpdateUser(string userId)
         {
             return View();

@@ -61,4 +61,3 @@ F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Whoops.pdb
 F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Whoops.csproj.CopyComplete
 F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Razor\Views\UserManagement\CreateUser.g.cshtml.cs
 F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Razor\Views\UserManagement\GetUserInfo.g.cshtml.cs
-F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Whoops.csprojAssemblyReference.cache
