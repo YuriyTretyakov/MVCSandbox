@@ -4,11 +4,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace Whoops.DataLayer
 {
-    public class WorldContext:IdentityDbContext<User>
+    public class WorldContext:DbContext
     {
         private readonly IConfigurationRoot _config;
 
-        public WorldContext(IConfigurationRoot config, DbContextOptions options) :base(options)
+        public WorldContext(IConfigurationRoot config, DbContextOptions<WorldContext> options) :base(options)
         {
             _config = config;
         }

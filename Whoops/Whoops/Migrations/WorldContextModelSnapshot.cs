@@ -181,16 +181,12 @@ namespace Whoops.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<DateTime>("DOB");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
 
                     b.Property<string>("FirstName");
-
-                    b.Property<int>("HistoryId");
 
                     b.Property<bool>("IsNotificationsAllowed");
 
@@ -201,8 +197,6 @@ namespace Whoops.Migrations
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<int>("LoyaltyId");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
@@ -224,6 +218,8 @@ namespace Whoops.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
+
+                    b.Property<int>("UserRoleId");
 
                     b.HasKey("Id");
 

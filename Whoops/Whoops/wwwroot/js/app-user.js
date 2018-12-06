@@ -1,4 +1,4 @@
 ﻿(function () {
     "use strict";
-    angular.module("userController", ["simpleControls"]);
+    angular.module("app-user", ["simpleControls"]);
 })();

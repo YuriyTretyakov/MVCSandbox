@@ -13,7 +13,10 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Whoops.DataLayer;
+using Whoops.DataLayer.UserInfo;
+using Whoops.DataLayer.UsersAndRoles;
 using Whoops.Services;
+using Whoops.ViewModels;
 using Whoops.ViewModels.Index;
 
 namespace Whoops
@@ -39,7 +42,7 @@ namespace Whoops
             services.AddMvc().AddJsonOptions(
                 config =>
                     {
-                        config.SerializerSettings.ContractResolver=new CamelCasePropertyNamesContractResolver();
+                        config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                     }
                 );
 
@@ -50,21 +53,24 @@ namespace Whoops
             services.AddIdentity<User, IdentityRole>(config =>
              {
                  config.User.RequireUniqueEmail = true;
-                 config.Password.RequiredLength = 4;
+                 config.Password.RequireLowercase = false;
+                 config.Password.RequireNonAlphanumeric = false;
                  config.Password.RequireDigit = false;
+                 config.Password.RequiredLength = 4;
              }
-            ).AddEntityFrameworkStores<WorldContext>();
+            ).AddEntityFrameworkStores<UserInfoContext>();
             services.AddTransient<GeoCoordServices>();
             services.AddTransient<WorldContextSeedData>();
+            services.AddTransient<UserRolesSeeder>();
             services.AddScoped<IWorldRepository, WorldRepository>();
             services.AddSingleton<IConfigurationRoot>(_config);
             services.AddDbContext<WorldContext>();
+            services.AddDbContext<UserInfoContext>();
             services.AddLogging();
-            services.ConfigureApplicationCookie(opt =>  opt.LoginPath = "/auth/login");
+            services.ConfigureApplicationCookie(opt => opt.LoginPath = "/auth/login");
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env,WorldContextSeedData seeder,ILoggerFactory factory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,WorldContextSeedData seeder,ILoggerFactory factory, UserRolesSeeder userRolesSeeder)
         {
             Mapper.Initialize(config =>
                 {
@@ -72,7 +78,13 @@ namespace Whoops
                         opt => opt.MapFrom(src => src.Created)).ReverseMap();
                     config.CreateMap<StopViewModel, Stop>().ReverseMap();
 
+                    config.CreateMap<CreateUserViewModel, User>()
+                          .ForMember(d => d.IsNotificationsAllowed, opt => opt.MapFrom(src => src.AllowNotifications))
+                          .ReverseMap();
+
                 });
+
+           
             
 
             if (env.IsDevelopment())
@@ -97,7 +109,7 @@ namespace Whoops
                 );
                 
             });
-
+            userRolesSeeder.Seed().Wait();
             seeder.EnsureSeedData().Wait();
         }
     }

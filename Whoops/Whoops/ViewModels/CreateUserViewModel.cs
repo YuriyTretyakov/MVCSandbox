@@ -15,5 +15,6 @@ namespace Whoops.ViewModels
         public string Password { get; set; }
         [Required]
         public string ConfirmPassword { get; set; }
+        public bool AllowNotifications { get; set; }
     }
 }

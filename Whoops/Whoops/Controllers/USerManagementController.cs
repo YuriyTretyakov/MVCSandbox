@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
+using Whoops.DataLayer;
 using Whoops.ViewModels;
 
 namespace Whoops.Controllers
@@ -8,7 +13,13 @@ namespace Whoops.Controllers
     
     public class UserManagementController : Controller
     {
-        
+        private readonly UserManager<User> _userManager;
+
+        public UserManagementController(UserManager<User> userManager)
+        {
+            _userManager = userManager;
+        }
+
         [HttpGet]
         public IActionResult CreateUser()
         {
@@ -20,10 +31,22 @@ namespace Whoops.Controllers
         {
             if (ModelState.IsValid)
             {
-                return View();
+                if (createUserView.ConfirmPassword != createUserView.Password)
+                    return BadRequest("Passwords doesn't match");
+
+                var user = Mapper.Map<User>(createUserView);
+                user.LastLoggedInOn = DateTime.Now;
+                user.RegisteredOn = DateTime.Now;
+                user.UserName = user.Email;
+                var result=await _userManager.CreateAsync(user, createUserView.Password);
+
+                if (result.Succeeded)
+                    return Created($"/usermanagement/GetUserInfo/{user.Id}", user);
+
+                return BadRequest(string.Join("\r\n",result.Errors.Select(e=>e.Description)));
             }
 
-            ModelState.AddModelError("","Invalid data");
+            
             return BadRequest(ModelState);
         }
 

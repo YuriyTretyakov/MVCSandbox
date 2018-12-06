@@ -3,35 +3,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Whoops.DataLayer.UserInfo;
 
 namespace Whoops.DataLayer
 {
     public class WorldContextSeedData
     {
         private readonly WorldContext _context;
-        private readonly UserManager<User> _userManager;
 
-        public WorldContextSeedData(WorldContext context,UserManager<User> userManager)
+        public WorldContextSeedData(WorldContext context)
         {
             _context = context;
-            _userManager = userManager;
+         
         }
 
         public async Task EnsureSeedData()
         {
-            string seedUserName = "admin";
 
+            string seedUserName = "admin@site.com";
 
-            if (await _userManager.FindByEmailAsync("admin@site.com") ==null)
-            {
-                var user = new User
-                {
-                    UserName = seedUserName,
-                    Email = "admin@site.com"
-                };
-
-                IdentityResult result=await _userManager.CreateAsync(user, "P@ssword");
-            }
 
 
             if (!_context.Trips.Any())

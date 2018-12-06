@@ -21,16 +21,16 @@
         <div class="text-danger" ng-show="vm.errorMessage" ng-cloak>{{vm.errorMessage}}</div>
         <wait-cursor display-When="vm.isBusy"> </wait-cursor>
 
-        <form novalidate name="newUserForm" ng-submit="vm.createUser()">
+        <form novalidate name="newUserForm" ng-submit="vm.createUser()" method="get">
             <div class="form-group">
                 <label>FirstName</label>
                 <input class="form-control" type="text" id="firstname" name="firstname" ng-model="vm.newUser.firstName" required ng-minlength="2" ng-maxlength="30" />
-                <span ng-show="newUserForm.firstname.$error.required" class="text-warning">Name is required</span>
-                <span ng-show="newUserForm.firstname.$error.minlength" class="text-warning">name must be at least 2 characters</span>
+                <span ng-show="newUserForm.firstname.$error.required" class="text-muted">Name is required</span>
+                <span ng-show="newUserForm.firstname.$error.minlength" class="text-muted">name must be at least 2 characters</span>
             </div>
             <div class="form-group">
                 <label>LastName</label>
-                <input class="form-control" type="text" id="lastname" name="lastname" ng-model="vm.newUser.lastName" ng-maxlength="30" />
+                <input class="form-control" type="text" id="lastname" name="lastname" ng-model="vm.newUser.lastName" ng ng-minlength="1" ng-maxlength="30" />
             </div>
             <div class="form-group">
                 <label>Date Of Birth</label>
@@ -39,17 +39,25 @@
             <div class="form-group">
                 <label>Email</label>
                 <input class="form-control" type="email" id="email" name="email" ng-model="vm.newUser.email" required ng-maxlength="30" />
-                <span ng-show="newUserForm.email.$error.required" class="text-warning">Email is required</span>
+                <span ng-hide="newUserForm.email.$valid" class="text-muted">Email is invalid </span>
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input class="form-control" type="password" id="password" name="password" ng-model="vm.newUser.password" required ng-maxlength="30" />
-                <span ng-show="newUserForm.password.$error.required" class="text-warning">Password is required</span>
+                <input class="form-control" type="password" id="password" name="password" ng-model="vm.newUser.password" required ng-minlength="4" ng-maxlength="30" ng-change="vm.validatePassword()" />
+                <div ng-hide="newUserForm.password.$valid" class="text-muted">Password length must be at least 4 chars</div>
+                <div ng-hide="vm.isPasswordValid" class="text-muted">Password and ConfirmPassword doesn't match</div>
+
             </div>
             <div class="form-group">
                 <label>ConfirmPassword</label>
-                <input class="form-control" type="password" id="confirmpassword" name="confirmpassword" ng-model="vm.newUser.confirmPassword" required ng-maxlength="30" />
-                <span ng-show="newUserForm.confirmPassword.$error.required" class="text-warning">ConfirmPassword is required</span>
+                <input class="form-control" type="password" id="confirmpassword" name="confirmpassword" ng-model="vm.newUser.confirmPassword" required ng-minlength="4" ng-maxlength="30" ng-change="vm.validatePassword()" />
+                <div ng-hide="newUserForm.confirmpassword.$valid" class="text-muted">Password length must be at least 4 chars</div>
+                <div ng-hide="vm.isPasswordValid" class="text-muted">Password and ConfirmPassword doesn't match</div>
+            </div>
+            <div class="form-group">
+                <label class="checkbox-inline">
+                <input  type="checkbox" id="allowNotifications" name="allowNotifications" ng-model="vm.newUser.allowNotifications" />
+                I want receive notifications</label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Register" class="btn btn-sm btn-success" ng-disabled="newUserForm.$invalid" />
@@ -59,3 +67,4 @@
     </div>
 </div>
 </div>
+
