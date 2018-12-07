@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Whoops.DataLayer.UserInfo;
 
 namespace Whoops.DataLayer
 {
@@ -21,7 +22,8 @@ namespace Whoops.DataLayer
 
         public DbSet<Trip> Trips { get; set; }
         public DbSet<Stop> Stops { get; set; }
-
+        public DbSet<UserHistory> UserHistory { get; internal set; }
+        public DbSet<Loyalty> Loyalty { get; internal set; }
     }
     
 }

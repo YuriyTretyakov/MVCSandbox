@@ -1,10 +1,12 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Whoops.DataLayer.UserInfo
 {
     public class UserHistory
     {
         public string UserId { get; set; }
+        [Key]
         public int HistoryId { get; set; }
         public DateTime ActivityDate { get; set; }
         public string ProcedureName { get; set; }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
+using System.Collections.Generic;
+using Whoops.DataLayer.UserInfo;
 
 namespace Whoops.DataLayer
 {
@@ -10,5 +12,7 @@ namespace Whoops.DataLayer
         public bool IsNotificationsAllowed { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        ICollection<UserHistory> History { get; set; }
+        public Loyalty Loyalty { get; set; }
     }
 }

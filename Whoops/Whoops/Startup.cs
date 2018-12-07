@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Whoops.DataLayer;
-using Whoops.DataLayer.UserInfo;
-using Whoops.DataLayer.UsersAndRoles;
 using Whoops.Services;
 using Whoops.ViewModels;
 using Whoops.ViewModels.Index;
@@ -58,19 +50,19 @@ namespace Whoops
                  config.Password.RequireDigit = false;
                  config.Password.RequiredLength = 4;
              }
-            ).AddEntityFrameworkStores<UserInfoContext>();
+            );
             services.AddTransient<GeoCoordServices>();
-            services.AddTransient<WorldContextSeedData>();
-            services.AddTransient<UserRolesSeeder>();
+            
+           
             services.AddScoped<IWorldRepository, WorldRepository>();
             services.AddSingleton<IConfigurationRoot>(_config);
             services.AddDbContext<WorldContext>();
-            services.AddDbContext<UserInfoContext>();
+            services.AddTransient<WorldContextSeedData>();
             services.AddLogging();
             services.ConfigureApplicationCookie(opt => opt.LoginPath = "/auth/login");
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env,WorldContextSeedData seeder,ILoggerFactory factory, UserRolesSeeder userRolesSeeder)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,WorldContextSeedData seeder,ILoggerFactory factory)
         {
             Mapper.Initialize(config =>
                 {
@@ -83,9 +75,6 @@ namespace Whoops
                           .ReverseMap();
 
                 });
-
-           
-            
 
             if (env.IsDevelopment())
             {
@@ -109,7 +98,7 @@ namespace Whoops
                 );
                 
             });
-            userRolesSeeder.Seed().Wait();
+            seeder.SeedUsers().Wait();
             seeder.EnsureSeedData().Wait();
         }
     }

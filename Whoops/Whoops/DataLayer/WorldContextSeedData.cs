@@ -10,12 +10,47 @@ namespace Whoops.DataLayer
     public class WorldContextSeedData
     {
         private readonly WorldContext _context;
+        private readonly UserManager<User> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public WorldContextSeedData(WorldContext context)
+        public WorldContextSeedData(WorldContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             _context = context;
-         
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
+
+        public async Task SeedUsers()
+        {
+           
+                if (!await _roleManager.RoleExistsAsync("Administrator"))
+                    await _roleManager.CreateAsync(new IdentityRole { Name = "Administrator" });
+
+                if (!await _roleManager.RoleExistsAsync("Worker"))
+                    await _roleManager.CreateAsync(new IdentityRole { Name = "Worker" });
+
+                if (!await _roleManager.RoleExistsAsync("Customer"))
+                    await _roleManager.CreateAsync(new IdentityRole { Name = "Customer" });
+
+
+                string seedUserName = "admin@site.com";
+
+                if (await _userManager.FindByEmailAsync(seedUserName) == null)
+                {
+                    var user = new User
+                    {
+                        UserName = seedUserName,
+                        Email = seedUserName
+                    };
+
+                    IdentityResult result = await _userManager.CreateAsync(user, "P@ssword");
+
+                    if (result.Succeeded)
+                        await _userManager.AddToRolesAsync(user, new[] { "Administrator", "Worker" });
+            }
+        }
+
+
 
         public async Task EnsureSeedData()
         {
