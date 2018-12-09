@@ -70,5 +70,12 @@ namespace Whoops.DataLayer
             var concreteHistoryItem = _context.UserHistory.FirstOrDefault(h => h.HistoryId == historyId && h.UserId == userId);
             concreteHistoryItem.OperationistFeedback = opsFeedback;
         }
+
+        public void RemoveSeededUser()
+        {
+           // WorldContextSeedData.SeedUseName
+        }
+
+
     }
 }

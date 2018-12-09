@@ -14,5 +14,6 @@ namespace Whoops.DataLayer
         public string LastName { get; set; }
         ICollection<UserHistory> History { get; set; }
         public Loyalty Loyalty { get; set; }
+        public DateTime DOB { get; set; }
     }
 }

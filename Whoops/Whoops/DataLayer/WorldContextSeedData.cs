@@ -12,6 +12,8 @@ namespace Whoops.DataLayer
         private readonly WorldContext _context;
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        public const string SeedUseName = "admin@site.com";
+
 
         public WorldContextSeedData(WorldContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
@@ -32,15 +34,12 @@ namespace Whoops.DataLayer
                 if (!await _roleManager.RoleExistsAsync("Customer"))
                     await _roleManager.CreateAsync(new IdentityRole { Name = "Customer" });
 
-
-                string seedUserName = "admin@site.com";
-
-                if (await _userManager.FindByEmailAsync(seedUserName) == null)
+                if (await _userManager.FindByEmailAsync(SeedUseName) == null)
                 {
                     var user = new User
                     {
-                        UserName = seedUserName,
-                        Email = seedUserName
+                        UserName = SeedUseName,
+                        Email = SeedUseName
                     };
 
                     IdentityResult result = await _userManager.CreateAsync(user, "P@ssword");
@@ -55,15 +54,11 @@ namespace Whoops.DataLayer
         public async Task EnsureSeedData()
         {
 
-            string seedUserName = "admin@site.com";
-
-
-
             if (!_context.Trips.Any())
             {
                 var trip1 = new Trip
                 {
-                    UserName = seedUserName,
+                    UserName = SeedUseName,
                     DateCreated = DateTime.UtcNow,
                     Name = "Trip1",
                     Stops = new List<Stop>
@@ -79,7 +74,7 @@ namespace Whoops.DataLayer
 
                 var trip2 = new Trip
                 {
-                    UserName = seedUserName,
+                    UserName = SeedUseName,
                     DateCreated = DateTime.UtcNow,
                     Name = "Trip2",
                     Stops = new List<Stop>

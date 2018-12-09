@@ -5,7 +5,7 @@ using Whoops.DataLayer.UserInfo;
 
 namespace Whoops.DataLayer
 {
-    public class WorldContext:DbContext
+    public class WorldContext:IdentityDbContext<User>
     {
         private readonly IConfigurationRoot _config;
 

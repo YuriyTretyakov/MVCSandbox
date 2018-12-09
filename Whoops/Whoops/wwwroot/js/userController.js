@@ -32,22 +32,22 @@
         }
 
             
-            //vm.getUserInfo = function (userId) {
-            //    vm.isBusy = true;
-            //    vm.errorMessage = "";
+        vm.getUserInfo = function () {
+                vm.isBusy = true;
+                vm.errorMessage = "";
 
-            //    $http.get("UserManagement/GetUserInfo/" + userId).then(function (response) {
+                $http.get("UserManagement/GetUserInfo").then(function (response) {
 
-            //        angular.copy(response.data, vm.user);
+                    angular.copy(response.data, vm.user);
 
-            //    }, function (error) {
-            //        vm.errorMessage = "Failed to get user info: " + error;
-            //    }).finally(function () {
-            //        vm.isBusy = false;
-            //    });
+                }, function (error) {
+                    vm.errorMessage = "Failed to get user info: " + error;
+                }).finally(function () {
+                    vm.isBusy = false;
+                });
 
 
-            //}
+            }
 
         vm.validatePassword = function () {
             vm.isPasswordValid = (vm.newUser.confirmPassword === vm.newUser.password);

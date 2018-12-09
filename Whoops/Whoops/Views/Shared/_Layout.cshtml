@@ -31,7 +31,7 @@
     </div>
 
     <div id="wrapper">
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-expand-sm bg-light navbar-light">
             <div class="container-fluid">
                 <ul class="nav navbar-nav navbar-left">
                     <li>
@@ -39,15 +39,30 @@
                             <i class="fa fa-chevron-left"></i>
                         </button>
                     </li>
-                </ul>
-               
-                @if (!User.Identity.IsAuthenticated)
-                {
-                <a class="fa fa-sign-in fa-lg" asp-controller="UserManagement" asp-action="CreateUser">Register</a>
-                }
+                    </ul>
+                <ul class="nav navbar-nav navbar-right">
 
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="fa fa-sign-in fa-lg" asp-controller="UserManagement" asp-action="CreateUser">Register</a>
+                        </li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                     <li nav-item dropdown>
+                            <button  class="btn btn-warning dropdown-toggle" type="button" id="btnDropdownDemo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @User.Identity.Name
+                            </button>
 
-            </div>
+                            <div class="dropdown-menu" aria-labelledby="btnDropdownDemo">
+                                <a class="dropdown-item" asp-controller="UserManagement" asp-action="GetUserInfo" asp>My Profile</a>
+                                <a class="dropdown-item" asp-controller="Auth" asp-action="Logout">Logout</a>
+                            </div>
+                     </li>
+                    }
+                    </ul>
+             </div>
         </nav>
         <div id="main" class="container-fluid">
             @RenderBody()

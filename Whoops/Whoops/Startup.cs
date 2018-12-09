@@ -10,6 +10,7 @@ using Whoops.DataLayer;
 using Whoops.Services;
 using Whoops.ViewModels;
 using Whoops.ViewModels.Index;
+using Whoops.ViewModels.User;
 
 namespace Whoops
 {
@@ -50,7 +51,7 @@ namespace Whoops
                  config.Password.RequireDigit = false;
                  config.Password.RequiredLength = 4;
              }
-            );
+            ).AddEntityFrameworkStores<WorldContext>();
             services.AddTransient<GeoCoordServices>();
             
            
@@ -72,9 +73,12 @@ namespace Whoops
 
                     config.CreateMap<CreateUserViewModel, User>()
                           .ForMember(d => d.IsNotificationsAllowed, opt => opt.MapFrom(src => src.AllowNotifications))
+                          .ForMember(d => d.PhoneNumber, opt => opt.MapFrom(src => src.Phone))
                           .ReverseMap();
 
-                });
+                    config.CreateMap<UserInfoViewModel, User>()
+                              .ForMember(d => d.IsNotificationsAllowed, opt => opt.MapFrom(src => src.AllowNotifications)).ReverseMap();
+        });
 
             if (env.IsDevelopment())
             {

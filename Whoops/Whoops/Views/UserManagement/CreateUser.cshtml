@@ -1,4 +1,4 @@
-﻿@model Whoops.ViewModels.CreateUserViewModel
+﻿@model Whoops.ViewModels.User.CreateUserViewModel
 
 @{
     ViewBag.Title = "Create User";
@@ -18,7 +18,7 @@
 </div>
 <div class="row" ng-app="app-user">
     <div ng-controller="userController as vm" class="col-md-6 offset-3">
-        <div class="text-danger" ng-show="vm.errorMessage" ng-cloak>{{vm.errorMessage}}</div>
+      
         <wait-cursor display-When="vm.isBusy"> </wait-cursor>
 
         <form novalidate name="newUserForm" ng-submit="vm.createUser()" method="get">
@@ -42,6 +42,11 @@
                 <span ng-hide="newUserForm.email.$valid" class="text-muted">Email is invalid </span>
             </div>
             <div class="form-group">
+                <label>Phone</label>
+                <input class="form-control" type="tel" id="phone" name="phone" ng-model="vm.newUser.phone" ng-maxlength="30" />
+                <span ng-hide="newUserForm.phone.$valid" class="text-muted">Email is invalid </span>
+            </div>
+            <div class="form-group">
                 <label>Password</label>
                 <input class="form-control" type="password" id="password" name="password" ng-model="vm.newUser.password" required ng-minlength="4" ng-maxlength="30" ng-change="vm.validatePassword()" />
                 <div ng-hide="newUserForm.password.$valid" class="text-muted">Password length must be at least 4 chars</div>
@@ -56,10 +61,12 @@
             </div>
             <div class="form-group">
                 <label class="checkbox-inline">
-                <input  type="checkbox" id="allowNotifications" name="allowNotifications" ng-model="vm.newUser.allowNotifications" />
-                I want receive notifications</label>
+                    <input type="checkbox" id="allowNotifications" name="allowNotifications" ng-model="vm.newUser.allowNotifications" />
+                    I want receive notifications
+                </label>
             </div>
             <div class="form-group">
+                <div class="text-danger" ng-show="vm.errorMessage" ng-cloak>{{vm.errorMessage}}</div>
                 <input type="submit" value="Register" class="btn btn-sm btn-success" ng-disabled="newUserForm.$invalid" />
                 <a asp-controller="App" asp-action="Index" class="btn btn-secondary">Cancel</a>
             </div>

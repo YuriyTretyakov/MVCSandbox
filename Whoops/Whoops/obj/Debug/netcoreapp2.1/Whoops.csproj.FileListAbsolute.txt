@@ -51,6 +51,8 @@ F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Razor\Views\Ap
 F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Razor\Views\App\Trips.g.cshtml.cs
 F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Razor\Views\Auth\Login.g.cshtml.cs
 F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
+F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Razor\Views\UserManagement\CreateUser.g.cshtml.cs
+F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Razor\Views\UserManagement\GetUserInfo.g.cshtml.cs
 F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
 F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
 F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Whoops.RazorTargetAssemblyInfo.cache
@@ -59,5 +61,4 @@ F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Whoops.Views.p
 F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Whoops.dll
 F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Whoops.pdb
 F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Whoops.csproj.CopyComplete
-F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Razor\Views\UserManagement\CreateUser.g.cshtml.cs
-F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Razor\Views\UserManagement\GetUserInfo.g.cshtml.cs
+F:\Work\WebApplication\Repo\Whoops\Whoops\obj\Debug\netcoreapp2.1\Whoops.csprojAssemblyReference.cache
