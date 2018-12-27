@@ -50,11 +50,15 @@ namespace Whoops
                  config.Password.RequireNonAlphanumeric = false;
                  config.Password.RequireDigit = false;
                  config.Password.RequiredLength = 4;
+                 config.Password.RequireUppercase = false;
+                 config.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
              }
-            ).AddEntityFrameworkStores<WorldContext>();
+            ).AddDefaultTokenProviders()
+             .AddEntityFrameworkStores<WorldContext>();
             services.AddTransient<GeoCoordServices>();
-            
-           
+            services.AddSingleton<EmailSender>();
+           // services.AddSingleton<ViberMessanger>();
+
             services.AddScoped<IWorldRepository, WorldRepository>();
             services.AddSingleton<IConfigurationRoot>(_config);
             services.AddDbContext<WorldContext>();
@@ -77,7 +81,8 @@ namespace Whoops
                           .ReverseMap();
 
                     config.CreateMap<UserInfoViewModel, User>()
-                              .ForMember(d => d.IsNotificationsAllowed, opt => opt.MapFrom(src => src.AllowNotifications)).ReverseMap();
+                              .ForMember(d => d.IsNotificationsAllowed, opt => opt.MapFrom(src => src.AllowNotifications))
+                              .ForMember(d => d.PhoneNumber, opt => opt.MapFrom(src => src.Phone)).ReverseMap();
         });
 
             if (env.IsDevelopment())

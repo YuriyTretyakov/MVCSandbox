@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Whoops.DataLayer;
+using Whoops.Services;
 using Whoops.ViewModels;
 using Whoops.ViewModels.User;
 
@@ -16,11 +17,21 @@ namespace Whoops.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly EmailSender _sender;
+       // private readonly ViberMessanger _viber;
 
-        public UserManagementController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        public UserManagementController(UserManager<User> userManager, 
+                                        RoleManager<IdentityRole> roleManager,
+                                        SignInManager<User> signInManager,
+                                        EmailSender sender)
+           //                             ViberMessanger viber)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _signInManager = signInManager;
+            _sender = sender;
+         //   _viber = viber;
         }
 
         [HttpGet]
@@ -57,13 +68,19 @@ namespace Whoops.Controllers
             return View();
         }
 
+        [Authorize]
+        [HttpGet]
+        public IActionResult GetUserInfo()
+        {
+            return View();
+        }
 
         [Authorize]
         [HttpGet]
-        public  async Task<IActionResult> GetUserInfo()
+        public  async Task<IActionResult> GetUserInfoData()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            return View(Mapper.Map<UserInfoViewModel>(user));
+            return Ok(Mapper.Map<UserInfoViewModel>(user));
         }
 
         [Authorize]
@@ -97,7 +114,20 @@ namespace Whoops.Controllers
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRolesAsync(user, roles);
-                    return Created($"/usermanagement/GetUserInfo/{user.Id}", Mapper.Map<UserInfoViewModel>(user));
+                    await _signInManager.PasswordSignInAsync(user.UserName, createUserView.Password, true, false);
+
+                  //  var emailConfirmToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                  //  string confirmationLink = Url.Action("ConfirmEmail","Account", 
+                                                    //      new{userid = user.Id,
+                                                        //      token = emailConfirmToken
+                                                      //    },protocol: HttpContext.Request.Scheme);
+
+                 //   await _viber.PostMessage("some text", "+380997151922");
+
+                   
+                //    _sender.SendConfirmation(user.Email, confirmationLink, "SomeFunWebSite: Confirm your email to receive notifications");
+
+                    return Created($"/usermanagement/GetUserInfo", Mapper.Map<UserInfoViewModel>(user));
                 }
 
                 return BadRequest(string.Join("\r\n", result.Errors.Select(e => e.Description)));

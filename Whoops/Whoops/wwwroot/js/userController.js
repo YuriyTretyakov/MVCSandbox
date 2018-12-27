@@ -4,7 +4,7 @@
         .controller("userController", userController);
 
 
-    function userController($http) {
+    function userController($http, $window) {
 
         var vm = this;
         vm.isBusy = true;
@@ -20,8 +20,11 @@
             console.log(vm.newUser);
             $http.post("/UserManagement/CreateUser", vm.newUser)
                 .then(function (response) {
-                    
-                    vm.newUser = {};
+                    var location = response.headers('Location');
+
+                    if (location) {
+                        $window.location.href = location;
+                    }
                 },
                 function (error) {
                         vm.errorMessage = "Failed to create user:   " + error.data;
@@ -36,10 +39,8 @@
                 vm.isBusy = true;
                 vm.errorMessage = "";
 
-                $http.get("UserManagement/GetUserInfo").then(function (response) {
-
+            $http.get("/UserManagement/GetUserInfoData").then(function (response) {
                     angular.copy(response.data, vm.user);
-
                 }, function (error) {
                     vm.errorMessage = "Failed to get user info: " + error;
                 }).finally(function () {

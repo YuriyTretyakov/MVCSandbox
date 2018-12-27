@@ -14,6 +14,22 @@
     },
     { "library": "font-awesome@4.7.0" },
     { "library": "bootswatch@4.1.3" },
-    {"library": "angular.js@1.7.5","destination": "wwwroot/lib/angular"}
+    {
+      "library": "angular.js@1.7.5",
+      "destination": "wwwroot/lib/angular"
+    },
+    {
+      "library": "fullcalendar@3.9.0",
+      "destination": "wwwroot/lib/"
+    },
+    {
+      "library": "leaflet@1.3.4",
+      "destination": "wwwroot/lib/"
+    }
   ]
 }
+
+
+
+//https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css
+//https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css

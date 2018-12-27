@@ -56,7 +56,7 @@ namespace AspNetCore
             WriteLiteral("<div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n        <h1>Welcome to the some fun site</h1>\r\n        <p>New opportunities is very close to you</p>\r\n        ");
             EndContext();
             BeginContext(248, 93, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f8c187d10d3b46ea954dfdecab981d38", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6365ec77b03c4bcbab116870a8469f34", async() => {
                 BeginContext(322, 15, true);
                 WriteLiteral("View your trips");
                 EndContext();

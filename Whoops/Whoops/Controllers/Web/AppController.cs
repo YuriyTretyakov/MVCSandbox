@@ -27,8 +27,7 @@ namespace Whoops.Controllers.Web
         [Authorize]
         public IActionResult Trips()
         {
-            var data = _repository.GetAllTrips();
-            return View(data);
+           return View();
         }
 
         public IActionResult Contacts()
